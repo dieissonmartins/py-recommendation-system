@@ -56,3 +56,14 @@ join_books_with_users = join_books_with_ratings.merge(data_users, how='inner', o
 
 join_books_with_users.info()
 # join_books_with_users.head()
+
+# incorret resgitry
+join_books_with_users.iloc[287500, 3] = ''
+join_books_with_users.iloc[352361, 3] = ''
+join_books_with_users.iloc[467962, 3] = ''
+join_books_with_users.iloc[469216, 3] = ''
+
+# convert column year
+join_books_with_users['Year-Of-Publication'] = pd.to_numeric(join_books_with_users['Year-Of-Publication'])
+
+print(join_books_with_users.dtypes)
