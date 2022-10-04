@@ -14,4 +14,13 @@ import warnings
 
 warnings.filterwarnings('ignore')
 
-print('teste')
+print('Script de recomendações')
+
+# configs pandas
+pd.set_option('display.max_rows', 100)
+pd.set_option('display.max_columns', 50)
+
+# configs matplotlib Z
+# size graphic
+plt.rcParams['figure.figsize'] = (15, 6)
+plt.style.use('seaborn-darkgrid')
