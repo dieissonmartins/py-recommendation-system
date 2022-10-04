@@ -32,3 +32,27 @@ data_ratings = pd.read_csv(path_ratings)
 # get users
 path_users = path + '/tmp/Users.csv'
 data_users = pd.read_csv(path_users)
+
+# lines and columns
+# print(data_books.shape)
+# print(data_ratings.shape)
+# print(data_users.shape)
+
+# firsts lines books
+firsts_books = data_books.head()
+# print(firsts_books)
+
+# info header books
+info_books = data_books.info()
+# print(info_books)
+
+# join datas
+
+# join books with ratings
+join_books_with_ratings = data_books.merge(data_ratings, how='inner', on='ISBN')
+
+# join books_ratings with users
+join_books_with_users = join_books_with_ratings.merge(data_users, how='inner', on='User-ID')
+
+join_books_with_users.info()
+# join_books_with_users.head()
