@@ -39,10 +39,14 @@ pd.set_option('display.max_columns', 50)
 plt.rcParams['figure.figsize'] = (15, 6)
 plt.style.use('seaborn-darkgrid')
 
+########################################### Importação dos dados
+
 # get datas
 data_books = load_file('Books.csv')
 data_ratings = load_file('Ratings.csv')
 data_users = load_file('Users.csv')
+
+########################################### Modelagem dos dados
 
 # join datas
 join_books_with_ratings = data_books.merge(data_ratings, how='inner', on='ISBN')
@@ -61,4 +65,9 @@ join_books_with_users['Year-Of-Publication'] = pd.to_numeric(join_books_with_use
 locations = join_books_with_users['Location']
 
 # new colunn country
-locations['country'] = locations.apply(explode)
+join_books_with_users['country'] = locations.apply(explode)
+
+########################################### Data Visualization - Exploration
+
+data_describe = join_books_with_users.describe()
+print(data_describe)
