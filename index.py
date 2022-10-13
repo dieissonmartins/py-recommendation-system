@@ -10,6 +10,17 @@ path = os.path.dirname(os.path.realpath(__file__))
 
 warnings.filterwarnings('ignore')
 
+
+# split string
+def explode(region):
+    region_arr = region.split(',')
+    country = region_arr[-1].upper()
+
+    ret = country
+
+    return ret
+
+
 print('Script de recomendações')
 
 # configs pandas
@@ -67,3 +78,11 @@ join_books_with_users.iloc[469216, 3] = ''
 join_books_with_users['Year-Of-Publication'] = pd.to_numeric(join_books_with_users['Year-Of-Publication'])
 
 print(join_books_with_users.dtypes)
+
+print('locations')
+
+# select locarions colunm
+locations = join_books_with_users['Location']
+
+# new colunn country
+locations['country'] = locations.apply(explode)
