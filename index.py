@@ -69,5 +69,12 @@ join_books_with_users['country'] = locations.apply(explode)
 
 ########################################### Data Visualization - Exploration
 
+# remove ratings voids
+join_books_with_users = join_books_with_users.loc[join_books_with_users['Book-Rating'] > 0]
+
+# check is not null and sum
+join_books_with_users.isnull().sum(), join_books_with_users.shape
+
+# describe values
 data_describe = join_books_with_users.describe()
 print(data_describe)
