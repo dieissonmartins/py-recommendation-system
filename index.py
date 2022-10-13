@@ -78,3 +78,7 @@ join_books_with_users.isnull().sum(), join_books_with_users.shape
 # describe values
 data_describe = join_books_with_users.describe()
 print(data_describe)
+
+# visualization graphic
+plt.title('Analisando a avaliação')
+sns.boxplot(data=join_books_with_users, y='Book-Rating')
